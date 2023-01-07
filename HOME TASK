@@ -1,1 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Profile</title>
+  <style>
+    /* light green background color for cookie present */
+    body.cookie-present {
+      background-color: lightgreen;
+    }
 
+    /* light gray background color for cookie not present */
+    body.cookie-not-present {
+      background-color: lightgray;
+    }
+
+    /* green color for history item containing "Lab#2" */
+    li[data-contains-lab2] {
+      color: green;
+    }
+
+    /* blue color for history item not containing "Lab#2" */
+    li:not([data-contains-lab2]) {
+      color: blue;
+    }
+
+    /* remove underline and add clickable images for links */
+    a {
+      text-decoration: none;
+    }
+    a img {
+      border: 0;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="cookie-not-present">
+  <h1>Student Profile</h1>
+  <p>
+    This is a student profile page.
+    <img src="student.jpg" alt="Student" />
+  </p>
+  <table>
+    <tr>
+      <th>Course ID</th>
+      <th>Course Name</th>
+      <th>Credit Hours</th>
+      <th>Year Taken</th>
+    </tr>
+    <tr>
+      <td>CSC-101</td>
+      <td>Introduction to Computer Science</td>
+      <td>3</td>
+      <td>2022</td>
+    </tr>
+    <tr>
+      <td>MATH-200</td>
+      <td>Calculus I</td>
+      <td>4</td>
+      <td>2022</td>
+    </tr>
+    <tr>
+      <td>ENG-105</td>
+      <td>Technical Writing</td>
+      <td>3</td>
+      <td>2022</td>
+    </tr>
+    <tr>
+      <td>PHYS-250</td>
+      <td>General Physics I</td>
+      <td>4</td>
+      <td>2022</td>
+    </tr>
+  </table>
+  <div>
+    <button onclick="searchCourse()">Search Course</button>
+    <button onclick="addCourse()">Add Course</button>
+    <button onclick="updateCourse()">Update Course</button>
+    <button onclick="removeCourse()">Remove Course</button>
+    <button onclick="removeAllNew()">Remove All New</button>
+  </div>
+  <h2>Interests</h2>
+  <p>
+    My interests include:
+    <a href="https://www.ssuet.edu.pk/"><img src="ssuet.png" alt="SSUET University" /></a>
+  </p>
+  <h2>History</h2>
+  <ul id="history"></ul>
+</body>
+</html>
