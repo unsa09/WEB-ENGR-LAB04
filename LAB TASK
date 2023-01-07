@@ -1,1 +1,37 @@
+function setCookie(name, value, days) {
+  let expires = '';
+  if (days) {
+    let date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    expires = '; expires=' + date.toUTCString();
+  }
+  document.cookie = name + '=' + (value || '') + expires + '; path=/';
+}
+You can then use this function in the login function like this:
 
+Copy code
+function login() {
+  let checkbox = document.querySelector('input[type="checkbox"]');
+  if (checkbox.checked) {
+    let loginId = document.querySelector('input[name="loginId"]').value;
+    let name = document.querySelector('input[name="name"]').value;
+    setCookie('studentId', loginId, 7);
+    setCookie('name', name, 7);
+  }
+}
+To show the wait image on the Login Form OK button click, you can use the innerHTML property to add the image to the button like this:
+
+Copy code
+let okButton = document.querySelector('input[value="OK"]');
+okButton.addEventListener('click', function() {
+  if (!validateInputs()) {
+    alert('Please enter a Login ID and Password');
+    return;
+  }
+  okButton.innerHTML = '<img src="wait.gif" />';
+  setTimeout(function() {
+    login();
+    window.open('student-profile.html', '_blank');
+    okButton.innerHTML = 'OK';
+  }, 2000);
+});
